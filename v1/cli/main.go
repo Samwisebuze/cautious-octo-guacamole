@@ -108,6 +108,9 @@ func main() {
 	}
 
 	vargs := os.Args[1:]
+	if len(vargs) < 3 {
+		log.Fatal("please provide all inputs. ex. 100 BTC ETH")
+	}
 	usdAmount, primaySymbol, secondarySymbol := ParseCmdLineArgs(vargs)
 	useCase := NewUSDToCryptoSplitUseCase(usdAmount, NewCryptoTicker(primaySymbol, rates), NewCryptoTicker(secondarySymbol, rates))
 
